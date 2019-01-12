@@ -65,8 +65,20 @@ namespace MVCLifecycle
             // static files like .css, .js, images, ...
             // does not trigger MVC! -> faster
             app.UseStaticFiles();
-            app.UseMvcWithDefaultRoute();
-            
+            app.UseMvc(routes =>
+            {
+                // order! more specific first
+                routes.MapRoute(
+                    name: "marketing",
+                    template: "home/index",
+                    defaults: new { controller = "home", action = "splash" });
+
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
+                
+
         }
     }
 }

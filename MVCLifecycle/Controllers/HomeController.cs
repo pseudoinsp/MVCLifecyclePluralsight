@@ -12,32 +12,20 @@ namespace MVCLifecycle.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return Content("PcIndex");
         }
 
-        public IActionResult About()
+        [ActionName("Index")]
+        [IsMobile]
+        public IActionResult IndexOnMobile()
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
+            return Content("MobileIndex");
         }
 
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
 
-            return View();
-        }
-
-        public IActionResult Privacy()
+        public IActionResult Splash()
         {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return Content("This is the splash page!");
         }
     }
 }

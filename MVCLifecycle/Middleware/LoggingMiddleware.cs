@@ -21,6 +21,10 @@ namespace MVCLifecycle.Middleware
             Debug.WriteLine("=== Logging before");
             await next.Invoke(context);
             Debug.WriteLine("=== Logging after");
+
+            
         }
     }
+
+    
 }

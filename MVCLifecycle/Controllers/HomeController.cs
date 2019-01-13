@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using MVCLifecycle.Filters;
 using MVCLifecycle.Models;
 
 namespace MVCLifecycle.Controllers
@@ -22,7 +23,13 @@ namespace MVCLifecycle.Controllers
             return Content("MobileIndex");
         }
 
+        [LocalAuthorize]
+        public IActionResult Edit() => Content("Edit action method");
 
+        [HttpPost]
+        public IActionResult Edit(int id, string name) => Content("Edit post action method");
+
+        [LogAction]
         public IActionResult Splash()
         {
             return Content("This is the splash page!");

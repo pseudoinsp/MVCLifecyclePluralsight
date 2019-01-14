@@ -34,5 +34,17 @@ namespace MVCLifecycle.Controllers
         {
             return Content("This is the splash page!");
         }
+
+        [ResultLog]
+        public IActionResult Splush()
+        {
+            return Content("This is the splush page!");
+        }
+
+        [ResultLog]
+        public IActionResult GetCustomerData()
+        {
+            return Ok(new { Id = 3, FirstName = "Test", LastName = "Sample" });
+        }
     }
 }
